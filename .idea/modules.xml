@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ccic.iml" filepath="$PROJECT_DIR$/ccic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ccic_sh_analysis.iml" filepath="$PROJECT_DIR$/ccic_sh_analysis.iml" />
     </modules>
   </component>
 </project>
