@@ -1,12 +1,9 @@
-import pojo.Order;
-import pojo.OrderDetail;
-import service.ReadOrderDetailExcel;
-import service.ReadOrderExcel;
-import utils.DbUtils;
-import utils.MySQLUtils;
+import mybatis.pojo.User;
+import web.service.ReadUserExcel;
+import core.utils.DbUtils;
+import core.utils.MySQLUtils;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,19 +22,18 @@ public class Test {
 
         DbUtils sqlUtils=new MySQLUtils(dbHost,dbName,dbUser,dbPass);
         sqlUtils.connect();
-        String sql="select * from ccic_agency";
+        String sql="select * from ccic_vip_orders";
         ResultSet resultSet= sqlUtils.executeQuery(sql);
         while(resultSet.next()){
             System.out.println(resultSet.getString(1)+","+resultSet.getString(2));
         }
-
     }
     public static void testExcel(){
-        ReadOrderDetailExcel imp=new ReadOrderDetailExcel();
-        List<OrderDetail> list ;
+        ReadUserExcel imp=new ReadUserExcel();
+        List<User> list ;
         System.out.println(System.getProperty("user.dir") );
-        list=imp.readOrderDetailExcel(System.getProperty("user.dir") +"\\data\\4detail.xlsx");
-        for(OrderDetail orderDetail:list){
+        list=imp.readUserExcel(System.getProperty("user.dir") + "\\data\\20170626users.xlsx");
+        for(User orderDetail:list){
             System.out.println(orderDetail);
         }
     }

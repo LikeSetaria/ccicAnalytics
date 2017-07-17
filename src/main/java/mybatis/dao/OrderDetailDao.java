@@ -1,28 +1,25 @@
-package dao;
+package mybatis.dao;
 
-import pojo.Order;
-import pojo.OrderDetail;
-import utils.DbUtils;
-import utils.MySQLUtils;
+import core.utils.DbUtils;
+import mybatis.pojo.OrderDetail;
+import core.utils.MySQLUtils;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by 宝超 on 2017/6/10.
  */
 public class OrderDetailDao {
     private DbUtils targetDb;
-   public OrderDetailDao(DbUtils targetDb)throws Exception{
+    public OrderDetailDao(DbUtils targetDb)throws Exception{
        this.targetDb=targetDb;
    }
     public List<OrderDetail> getCCICOrderDetail()throws Exception {
         List<OrderDetail> list= new ArrayList<OrderDetail>();
-        String sql = "SELECT  date,VIPUserName,providerName,VIPNo,CarLicenseNo," +
+        String sql = "SELECT  orderDate,VIPUserName,providerName,VIPNo,CarLicenseNo," +
                 "policyID,usedIntegral,paintCount,maintenanceCount,washCount,annualInspectionCount,illegalHandledCount,memo,orderDetailID FROM ccic_order_detail";
         ResultSet rs;
 
@@ -32,7 +29,7 @@ public class OrderDetailDao {
         rs = targetDb.executeQuery(sql);
         while(rs.next()){
             OrderDetail order=new OrderDetail();
-            order.setDate(rs.getString("date"));
+            order.setDate(rs.getString("orderDate"));
             order.setVIPUserName(rs.getString("VIPUserName"));
             order.setProviderName(rs.getString("providerName"));
             order.setVIPNo(rs.getString("VIPNo"));
@@ -52,7 +49,7 @@ public class OrderDetailDao {
         return list;
     }
     public void insertCCICOrder(List<OrderDetail> list)throws  Exception{
-        String insertSql="insert into ccic_order_detail ( date,VIPUserName,providerName,VIPNo,CarLicenseNo,policyID,usedIntegral,paintCount,maintenanceCount,washCount,annualInspectionCount,illegalHandledCount,memo,orderDetailID) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String insertSql="insert into ccic_order_detail ( orderDate,VIPUserName,providerName,VIPNo,CarLicenseNo,policyID,usedIntegral,paintCount,maintenanceCount,washCount,annualInspectionCount,illegalHandledCount,memo,orderDetailID) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         targetDb.connect();
         PreparedStatement pstm =targetDb.prepareStatement(insertSql);
         int count = 0;

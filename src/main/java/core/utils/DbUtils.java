@@ -1,4 +1,4 @@
-package utils;
+package core.utils;
 
 /**
  * Created by 宝超 on 2017/6/10.

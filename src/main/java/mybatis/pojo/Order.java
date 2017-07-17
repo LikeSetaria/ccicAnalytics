@@ -1,4 +1,4 @@
-package pojo;
+package mybatis.pojo;
 
 /**
  * Created by 宝超 on 2017/6/10.

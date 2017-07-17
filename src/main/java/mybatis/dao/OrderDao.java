@@ -1,8 +1,8 @@
-package dao;
+package mybatis.dao;
 
-import pojo.Order;
-import utils.DbUtils;
-import utils.MySQLUtils;
+import mybatis.pojo.Order;
+import core.utils.DbUtils;
+import core.utils.MySQLUtils;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

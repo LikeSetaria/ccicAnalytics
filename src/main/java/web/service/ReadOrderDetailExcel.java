@@ -1,4 +1,4 @@
-package service;
+package web.service;
 
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -6,8 +6,7 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import pojo.Order;
-import pojo.OrderDetail;
+import mybatis.pojo.OrderDetail;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -96,7 +95,8 @@ public class ReadOrderDetailExcel {
                 if (cell == null) {
                     continue;
                 }
-                 String key3_usedIntegral=String.valueOf((int)cell.getNumericCellValue());
+                //System.out.println(cell.getStringCellValue());
+                 String key3_usedIntegral=String.valueOf(cell.getNumericCellValue());
                 orderDetail.setUsedIntegral(cell.getNumericCellValue());
 
                 cell = xssfRow.getCell(7);
